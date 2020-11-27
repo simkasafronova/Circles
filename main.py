@@ -3,7 +3,10 @@ import sys
 from PyQt5.QtGui import QPainter, QColor
 from PyQt5 import uic
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget
-from random import randrange
+from random import randrange, choice
+
+COLORS = [(168, 54, 50), (232, 129, 44), (232, 210, 44), (100, 191, 48),
+          (34, 138, 52), (39, 171, 160), (34, 78, 161), (92, 35, 158)]
 
 
 class MyWidget(QMainWindow):
@@ -27,7 +30,8 @@ class MyWidget(QMainWindow):
     def draw_circle(self, qp):
         width = randrange(10, 100, 10)
         x, y = randrange(100, 400, 20), randrange(100, 300, 20)
-        qp.setBrush(QColor(252, 232, 3))
+        color = choice(COLORS)
+        qp.setBrush(QColor(color[0], color[1], color[2]))
         qp.drawEllipse(x, y, width, width)
 
 
